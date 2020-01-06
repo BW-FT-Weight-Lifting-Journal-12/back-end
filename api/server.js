@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 
-const authenticate = require('../auth/auth-middleware.js');
+// const authenticate = require('../auth/auth-middleware.js');
 const authRouter = require('../auth/auth-router');
 
 const server = express();

@@ -2,7 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Users = require('./model');
-const restricted = require('./authenticate-middleware');
+const restricted = require('./auth-middleware');
 
 router.post('/register', (req, res) => {
   // implement registration
@@ -12,7 +12,11 @@ router.post('/register', (req, res) => {
   Users.add({username, password: hash})
     .then(saved => {
       res.status(201).json(saved);
-    });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    })
 });
 
 router.post('/login', (req, res) => {
