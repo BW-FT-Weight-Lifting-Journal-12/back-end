@@ -93,7 +93,6 @@ router.put('/:id', (req, res) => {
     // if (!changes.journal) {
     //     res.status(422).json({message: "Missing field: journal"})
     // }
-
 });
 
 router.delete('/:id', restricted, (req, res) => {

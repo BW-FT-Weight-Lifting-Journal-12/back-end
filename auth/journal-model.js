@@ -42,8 +42,13 @@ function update(id, changes) {
     return db('journal')
     .where('id', id)
     .update(changes)
-    .then(ids => {
-        const [id] = ids;
+    // .then(ids => {
+    //     const [id] = ids;
+    //     return db('journal')
+    //     .where({id})
+    //     .first();
+    // })
+    .then(() => {
         return db('journal')
         .where({id})
         .first();
