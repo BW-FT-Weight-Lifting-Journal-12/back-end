@@ -18,3 +18,17 @@ POST method
     - password
 
 https://weight-lifting-journal-12.herokuapp.com/api/auth/login
+
+
+Journal url
+POST method
+**Required fields:**
+    - exercise
+    - weight
+    - sets
+    - reps
+    - date
+    - muscle
+    - journal
+
+https://weight-lifting-journal-12.herokuapp.com/api/journal
