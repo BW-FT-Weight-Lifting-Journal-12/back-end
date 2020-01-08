@@ -3,13 +3,15 @@ exports.up = function(knex) {
       users.increments();
   
       users
-        .string('username', 255)
+        .string('username', 20)
         .notNullable()
         .unique();
-      users.string('password', 255).notNullable();
+      users.string('password', 20).notNullable();
     });
+
   };
   
   exports.down = function(knex, Promise) {
-    return knex.schema.dropTableIfExists('users');
+    return knex.schema
+        .dropTableIfExists('users');
   };
