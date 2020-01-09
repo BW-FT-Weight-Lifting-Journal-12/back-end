@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const UsersJournal = require('./usersjournal-model');
+const UsersJournal = require('./usersJournal-model');
 const restricted = require('./auth-middleware');
 
 router.get('/:id/journal', (req, res) => {
@@ -21,7 +21,7 @@ router.post('/:id/journal', (req, res) => {
     const {id} = req.params
     const {item} = req.body;
     const savedJournal = {journal_id:item}
-    
+
     UsersJournal.find(id).then(project => {
         res
             .status(200)
