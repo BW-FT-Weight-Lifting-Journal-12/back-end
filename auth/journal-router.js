@@ -4,11 +4,8 @@ const jwt = require('jsonwebtoken');
 const Journal = require('./journal-model');
 const restricted = require('./auth-middleware');
 
-const Projects = require('./journal-model');
-
-
 router.get('/', (req, res) => {
-    Projects.find().then(project => {
+    Journal.find().then(project => {
         res
             .status(200)
             .json(project);
@@ -23,7 +20,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     const id = req.params.id;
-    Projects.findById(id).then(project => {
+    Journal.findById(id).then(project => {
         res
             .status(200).json(project);
     })
@@ -39,7 +36,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     const newProject = req.body;
 
-    Projects.add(newProject)
+    Journal.add(newProject)
         .then(project => {
             res
                 .status(201)
@@ -60,13 +57,13 @@ router.get('/:users_id/journal', (req, res) => {
         .then(journal => {
             res
                 .status(200)
-                .json(journal.map(Projects.changeCompletedProperty));
+                .json(journal.map(Journal.changeCompletedProperty));
         })
         .catch(error => {
             console.log(error);
             res
                 .status(500)
-                .json({ message: 'Error reaching journal server.' });
+                .json({ message: 'Error reaching server.' });
         });
 });
 
@@ -76,23 +73,23 @@ router.get('/:users_id/journal/:id', (req, res) => {
         .then(task => {
             res
                 .status(200)
-                .json(Projects.changeCompletedProperty(task));
+                .json(Journal.changeCompletedProperty(task));
         })
         .catch(error => {
             console.log(error);
             res
                 .status(500)
-                .json({ message: 'Error reaching journal server.' });
+                .json({ message: 'Error reaching server.' });
         });
 });
 
 router.put('/:id', (req, res) => {
     const {id} = req.params
     let changes = req.body;
-    Projects.update(id, changes)
+    Journal.update(id, changes)
     .then(project => {
         if (project) {
-            Projects.findById(id)
+            Journal.findById(id)
             .then(update => {
                 res.json(update);
             });
