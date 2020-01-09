@@ -7,6 +7,7 @@ const server = express();
 // const authenticate = require('../auth/auth-middleware.js');
 const authRouter = require('../auth/auth-router');
 const journalRouter = require('../auth/journal-router');
+const usersRouter = require('../auth/users-router.js');
 
 server.use(helmet());
 server.use(cors());
@@ -14,6 +15,7 @@ server.use(express.json());
 
 server.use('/api/auth', authRouter);
 server.use('/api/journal', journalRouter);
+server.use('/api/users', usersRouter);
 
 server.get('/', (req, res) => {
     res.send("It's alive!");

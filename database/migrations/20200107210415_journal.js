@@ -36,20 +36,6 @@ exports.up = function(knex) {
         table
         .string('journal', 128)
         .notNullable();
-
-        // joined
-        // .integer('journalId')
-        // .references('id')
-        // .inTable('journals')
-        // .onDelete('CASCADE')
-        // .onUpdate('CASCADE');
-  
-        // joined
-        // .integer('exerciseId')
-        // .references('id')
-        // .inTable('exercises')
-        // .onDelete('CASCADE')
-        // .onUpdate('CASCADE');
     })
   };
   

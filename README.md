@@ -32,3 +32,6 @@ POST method
     - journal
 
 https://weight-lifting-journal-12.herokuapp.com/api/journal
+
+
+PUT method requires the id call at the end after /journal/

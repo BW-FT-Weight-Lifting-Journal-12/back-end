@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const Users = require('./model');
+const Journal = require('./journal-model');
 const restricted = require('./auth-middleware');
 
 const Projects = require('./journal-model');
@@ -53,6 +53,39 @@ router.post('/', (req, res) => {
         });
 });
 
+// filtering users for specific journal
+router.get('/:users_id/journal', (req, res) => {
+    const users_id = req.params.users_id;
+    Journal.findAllByProjectId(users_id)
+        .then(journal => {
+            res
+                .status(200)
+                .json(journal.map(Projects.changeCompletedProperty));
+        })
+        .catch(error => {
+            console.log(error);
+            res
+                .status(500)
+                .json({ message: 'Error reaching journal server.' });
+        });
+});
+
+router.get('/:users_id/journal/:id', (req, res) => {
+    const id = req.params.id;
+    Journal.findById(id)
+        .then(task => {
+            res
+                .status(200)
+                .json(Projects.changeCompletedProperty(task));
+        })
+        .catch(error => {
+            console.log(error);
+            res
+                .status(500)
+                .json({ message: 'Error reaching journal server.' });
+        });
+});
+
 router.put('/:id', (req, res) => {
     const {id} = req.params
     let changes = req.body;
@@ -71,37 +104,15 @@ router.put('/:id', (req, res) => {
         console.log(err)
         res.status(500).json({ message: 'Failed to update'})
     })
-
-    // if (!changes.exercise) {
-    //     res.status(422).json({message: "Missing field: exercise"})
-    // }
-    // if (!changes.weight) {
-    //     res.status(422).json({message: "Missing field: weight"})
-    // }
-    // if (!changes.sets) {
-    //     res.status(422).json({message: "Missing field: sets"})
-    // }
-    // if (!changes.reps) {
-    //     res.status(422).json({message: "Missing field: reps"})
-    // }
-    // if (!changes.date) {
-    //     res.status(422).json({message: "Missing field: date"})
-    // }
-    // if (!changes.muscle) {
-    //     res.status(422).json({message: "Missing field: muscle"})
-    // }
-    // if (!changes.journal) {
-    //     res.status(422).json({message: "Missing field: journal"})
-    // }
 });
 
-router.delete('/:id', restricted, (req, res) => {
-    Users.remove(req.params.id)
+router.delete('/:id', (req, res) => {
+    Journal.remove(req.params.id)
     .then(count => {
         if (count > 0) {
-            res.status(200).json({message: "User has been removed from the database"})
+            res.status(200).json({message: "Journal has been removed from the database"})
         } else {
-            res.status(404).json({message: "User does not exist!"})
+            res.status(404).json({message: "Journal does not exist!"})
         }
     })
     .catch(err => {

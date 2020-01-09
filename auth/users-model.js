@@ -10,47 +10,48 @@ module.exports = {
 }
 
 function find() {
-    return db('journal')
-    .select('id', 'exercise', 'weight', 'sets', 'reps', 'date', 'muscle', 'journal');
+    return db('users')
+    .select('id', 'username', 'password');
 }
 
 function findBy(filter) {
-    return db('journal')
+    return db('users')
     .where(filter);
 }
 
 function findById(id) {
-    return db('journal')
-    .select('id', 'exercise', 'weight', 'sets', 'reps', 'date','muscle', 'journal')
+    return db('users')
+    .select('id', 'username', 'password')
     .where({id})
     .first();
 }
 
 function add(user) {
-    return db('journal')
+    return db('users')
     .insert(user)
     .then(ids => {
         const [id] = ids; 
-        return db('journal')
-        .select('id', 'exercise', 'weight', 'sets', 'reps', 'date', 'muscle', 'journal')
+        return db('users')
+        .select('id', 'username', 'password')
         .where({id})
         .first();
     })
 }
 
 function update(id, changes) {
-    return db('journal')
+    return db('users')
     .where('id', id)
     .update(changes)
     .then(() => {
-        return db('journal')
+        const id = ids;
+        return db('users')
         .where({id})
         .first();
     })
 }
 
 function remove(id) {
-    return db('journal')
+    return db('users')
     .where({id})
     .delete();
 }
