@@ -36,21 +36,21 @@ router.get('/:id', (req, res) => {
 });
 
 
-router.post('/', (req, res) => {
-    const newProject = req.body;
+// router.post('/', (req, res) => {
+//     const newProject = req.body;
 
-    Projects.add(newProject)
-        .then(project => {
-            res
-                .status(201)
-                .json(project);
-        })
-        .catch (error => {
-            console.log(error);
-            res
-                .status(500)
-                .json({ message: 'Error reaching server.' });
-        });
-});
+//     Projects.add(newProject)
+//         .then(project => {
+//             res
+//                 .status(201)
+//                 .json(project);
+//         })
+//         .catch (error => {
+//             console.log(error);
+//             res
+//                 .status(500)
+//                 .json({ message: 'Error reaching server.' });
+//         });
+// });
 
 module.exports = router;
