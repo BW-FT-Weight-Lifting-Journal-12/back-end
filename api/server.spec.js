@@ -19,5 +19,10 @@ describe('Testing server route', () => {
             const res = await request(server).post("/api/auth/register");
             expect(res.status).toBe(500);
         });
+
+        it("Login info missing error", async() => {
+            const res = await request(server).post("/api/auth/login");
+            expect(res.status).toBe(500);
+        });
     });
 });
