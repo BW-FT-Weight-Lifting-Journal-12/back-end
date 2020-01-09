@@ -8,7 +8,7 @@ const server = express();
 const authRouter = require('../auth/auth-router');
 const journalRouter = require('../auth/journal-router');
 const usersRouter = require('../auth/users-router');
-const usersJournalRouter = require ('../auth/usersjournal-router');
+const usersJournalRouter = require ('../auth/usersJournal-router');
 
 server.use(helmet());
 server.use(cors());
