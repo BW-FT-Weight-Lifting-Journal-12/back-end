@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Base url\r https://weight-lifting-journal-12.herokuapp.com",
   "engines": {
-    "node": "10.16.0"
+    "node": "12.14.1",
+    "npm": "6.13.4"
   },
   "main": "index.js",
   "scripts": {
