@@ -24,5 +24,11 @@
     "jest": "^24.9.0",
     "nodemon": "^2.0.2",
     "supertest": "^4.0.2"
-  }
+  },
+  "name": "back-end",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/BW-FT-Weight-Lifting-Journal-12/back-end.git",
+  "author": "Christopher Hernandez <cerberean661@gmail.com>",
+  "license": "MIT"
 }
