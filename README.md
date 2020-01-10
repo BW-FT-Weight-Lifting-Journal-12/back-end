@@ -1,5 +1,5 @@
 Base url
-https://weight-lifting-journal-12.herokuapp.com
+https://weight-lifting-journal12.herokuapp.com
 
 
 Registration url
@@ -8,7 +8,7 @@ POST method
     - username
     - password
 
-https://weight-lifting-journal-12.herokuapp.com/api/auth/register
+https://weight-lifting-journal12.herokuapp.com/api/auth/register
 
 
 Login url
@@ -17,7 +17,7 @@ POST method
     - username
     - password
 
-https://weight-lifting-journal-12.herokuapp.com/api/auth/login
+https://weight-lifting-journal12.herokuapp.com/api/auth/login
 
 
 Journal url
@@ -31,7 +31,7 @@ POST method
     - muscle
     - journal
 
-https://weight-lifting-journal-12.herokuapp.com/api/journal
+https://weight-lifting-journal12.herokuapp.com/api/journal
 
 
 PUT method requires the id call at the end after /journal/

@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+// const bcrypt = require('bcryptjs');
+// const jwt = require('jsonwebtoken');
 const Journal = require('./journal-model');
-const restricted = require('./auth-middleware');
+// const restricted = require('./auth-middleware');
 
 router.get('/', (req, res) => {
     Journal.find().then(project => {
